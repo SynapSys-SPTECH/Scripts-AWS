@@ -16,7 +16,7 @@ fi
 
 # Comando para executar o git pull dentro do container
 echo "Executando 'git pull' no diretório $PROJECT_DIR dentro do container..."
-docker exec -it "$CONTAINER_NAME" bash -c "cd $PROJECT_DIR && git pull"
+docker exec -it "$CONTAINER_NAME" bash -c "git pull"
 
 # Mensagem de conclusão
 echo "Atualização do projeto no container $CONTAINER_NAME concluída!"

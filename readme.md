@@ -1,5 +1,18 @@
 # A primeira coisa que você irá executar na sua ec2, será o git clone https://github.com/SynapSys-SPTECH/Scripts-AWS.git para clonar este repositório na sua máquina.
 
+- Primeiramente, após a imagem, você deve dar permissão para o arquivo configurar-scripts.sh
+
+- sudo chmod +x configurar-scripts.sh
+
+# E depois rodar ele:
+
+- sudo ./configurar-scripts.sh
+
+
+## Isto fará com que ele coloque todos os scripts na pasta padrão da EC2, e dê permissão para todos os scripts.
+
+
+
 
 - Após a clonagem, você poderá criar as suas imagens a partir do script-criacao-imagens.sh, porém, este foi utilizado para configurar as imagens, e depois subir elas no docker hub, facilitando assim, a criação posterior, com o docker compose.
 

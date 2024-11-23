@@ -13,3 +13,6 @@ echo "Dando permissão de execução para todos os scripts"
 echo "=-----------------------------------------------="
 sudo chmod +x *.sh
 
+cd Scripts-AWS
+git restore .
+

@@ -3,7 +3,7 @@
 echo "=----------------------------------------------="
 echo "Copiando scripts para pasta principal da EC2"
 echo "=----------------------------------------------="
-cp -r * ..
+cp -rf * ..
 
 cd ..
 

@@ -48,7 +48,7 @@ for service in "${service_names[@]}"; do
     fi
 
   else
-    echo "Construindo e iniciando o container $service..."
+    echo "Containers não estão criados! CRIANDO a partir do arquivo docker-compose e iniciando os containers $service..."
     sudo docker-compose build "$service"
     sudo docker-compose up -d "$service"
   fi

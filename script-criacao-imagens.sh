@@ -45,7 +45,9 @@ fi
 mkdir -p init-db
 if [ -f "projeto/bancoProjeto/script-tabelas.sql" ]; then
     echo "Dando Pull e Copiando script-tabelas.sql de projeto/bancoProjeto/script-tabelas.sql para init-db..."
+    mkdir -p projeto/bancoProjeto
     cd projeto/bancoProjeto
+    git clone https://github.com/SynapSys-SPTECH/Banco-de-Dados.git projeto/bancoProjeto
     git pull
     cp "projeto/bancoProjeto/script-tabelas.sql" init-db/
 else

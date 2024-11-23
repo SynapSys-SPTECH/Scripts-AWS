@@ -11,5 +11,5 @@ cd
 echo "=-----------------------------------------------="
 echo "Dando permissão de execução para todos os scripts"
 echo "=-----------------------------------------------="
-chmod +x *.sh
+sudo chmod +x *.sh
 

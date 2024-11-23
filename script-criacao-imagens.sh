@@ -1,4 +1,3 @@
-  GNU nano 7.2                                                                                                                                                                                                                                                                                                                                                                                                                                                                   script-criacao-imagens.sh
 #!/bin/bash
 
 # Variáveis de containers e rede
@@ -88,7 +87,6 @@ if container_exists $NODE_CONTAINER; then
         cd projeto/Projeto-Synapsys && git pull
     else
         echo "Iniciando container $NODE_CONTAINER e atualizando o repositório..."
-        cd projeto/Projeto-Synapsys && git pull
         docker start $NODE_CONTAINER
     fi
 else

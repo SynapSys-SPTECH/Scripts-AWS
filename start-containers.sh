@@ -43,7 +43,7 @@ for service in "${service_names[@]}"; do
     if check_container_running "$service"; then
       echo "O container $service já está em execução."
     else
-      echo "Removendo o container $service e iniciando novamente..."
+      echo "Iniciando container $service..."
       sudo docker start "$service"
     fi
 
@@ -69,6 +69,13 @@ docker logs node-synapsys
 
 echo "Exibindo logs do container java-synapsys..."
 docker logs java-synapsys
+
+
+echo "=--------------------------------------------------------------------------------="
+echo "=--------------------------------------------------------------------------------="
+echo "Você pode atualizar o container de Node em: Scripts-AWS/atualizar-node-synapsys.sh"
+echo "=--------------------------------------------------------------------------------="
+echo "=--------------------------------------------------------------------------------="
 
 # Fim do script
 echo "Tudo configurado e containers estão em execução!"

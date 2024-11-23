@@ -49,14 +49,14 @@ if [ -f "projeto/bancoProjeto/script-tabelas.sql" ]; then
     cd projeto/bancoProjeto
     git clone https://github.com/SynapSys-SPTECH/Banco-de-Dados.git projeto/bancoProjeto
     git pull
-    cp "projeto/bancoProjeto/script-tabelas.sql" init-db/
+    cp "projeto/bancoProjeto/script-tabelas.sql" ../../init-db/
 else
     echo "O arquivo script.sql não foi encontrado. Clonando Repositório de MYSQL-Synapsys."
     mkdir -p projeto/bancoProjeto
     rm -rf projeto/bancoProjeto
     git clone https://github.com/SynapSys-SPTECH/Banco-de-Dados.git projeto/bancoProjeto
     git pull
-    cp "projeto/bancoProjeto/script-tabelas.sql" init-db/
+    cp "projeto/bancoProjeto/script-tabelas.sql" ../../init-db/
 fi
 
 # Criação e verificação do container MySQL
@@ -86,7 +86,7 @@ fi
 if container_exists $NODE_CONTAINER; then
     if docker ps --format '{{.Names}}' | grep -Eq "^${NODE_CONTAINER}$"; then
         echo "Container $NODE_CONTAINER já está rodando. Atualizando o repositório..."
-        cd projeto/Projeto-Synapsys && git pull
+        sudo ./atualizar-node-synapsys.sh
     else
         echo "Iniciando container $NODE_CONTAINER e atualizando o repositório..."
         docker start $NODE_CONTAINER

@@ -5,7 +5,7 @@ echo "Copiando scripts para pasta principal da EC2"
 echo "=----------------------------------------------="
 cp -r * ..
 
-cd
+cd ..
 
 
 echo "=-----------------------------------------------="

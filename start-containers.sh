@@ -60,17 +60,6 @@ echo "Verificando o status dos containers..."
 docker-compose ps -a
 
 
-# Verificando logs dos containers
-echo "Exibindo logs do container mysql-synapsys..."
-docker logs mysql-synapsys
-
-echo "Exibindo logs do container node-synapsys..."
-docker logs node-synapsys
-
-echo "Exibindo logs do container java-synapsys..."
-docker logs java-synapsys
-
-
 echo "=--------------------------------------------------------------------------------="
 echo "=--------------------------------------------------------------------------------="
 echo "Você pode atualizar o container de Node em: Scripts-AWS/atualizar-node-synapsys.sh"

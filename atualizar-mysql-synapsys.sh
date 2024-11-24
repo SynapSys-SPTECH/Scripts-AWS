@@ -16,7 +16,7 @@ echo"Apagando container de mysql"
 sudo docker rm mysql-synapsys
 
 echo"Apagando volumes de containers nao utilizados"
-sudo docker volume prune -y 
+sudo docker volume prune
 
 echo"Criando containers novos, com novo script de mysql"
 sudo ./start-containers.sh

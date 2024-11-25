@@ -193,7 +193,7 @@ EOF
 
     cd javaProjeto/Synapsys-Java
     docker build -t script-java .
-    docker run -d --name $JAVA_CONTAINER --network $NETWORK_NAME -e URL_SQL=$DB_URL -e USER=$DB_USERNAME -e SENHA=$DB_PASSWORD script-java
+    docker run -d --name $JAVA_CONTAINER --network $NETWORK_NAME -e URL_SQL=$DB_URL -e USER=$DB_USERNAME -e PASSWORD=$DB_PASSWORD script-java
 fi
 
 echo "Containers MySQL, Node e Java foram verificados e iniciados (ou criados, se necessário)."

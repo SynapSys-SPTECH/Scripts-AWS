@@ -162,7 +162,7 @@ EOF
 
 
 
-cat <<EOF > javaProjeto/Synapsys-Java/manage-logs.sh
+    cat <<EOF > javaProjeto/Synapsys-Java/manage-logs.sh
 #!/bin/bash
 
 # Diretório de logs no container
@@ -187,7 +187,7 @@ if [ -f "$LOGDIR/$LOG_FILE" ]; then
 else
     echo "Arquivo de log não foi gerado." >&2
 fi
-EOF 
+EOF
 
     cd javaProjeto/Synapsys-Java
     docker build -t script-java .

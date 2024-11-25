@@ -133,7 +133,7 @@ else
     echo "Configurando container Java..."
     mkdir -p javaProjeto/Synapsys-Java
 
-cat <<EOF > javaProjeto/Synapsys-Java/manage-logs.sh
+cat <<EOF > javaProjeto/Synapsys-Java/manage_logs.sh
 #!/bin/bash
 
 # Diretório de logs no container

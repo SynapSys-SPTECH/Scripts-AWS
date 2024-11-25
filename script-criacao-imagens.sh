@@ -11,7 +11,7 @@ MYSQL_ROOT_PASSWORD="urubu100"
 MYSQL_DATABASE="Synapsys"
 
 # Variáveis de ambiente para o container Java
-DB_URL="jdbc:mysql://172.18.0.2:3306/Synapsys"
+DB_URL="jdbc:mysql://mysql-synapsys:3306/Synapsys"
 DB_USERNAME="root"
 DB_PASSWORD="urubu100"
 NAME_BUCKET="bucket-synapsys"

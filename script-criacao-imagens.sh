@@ -133,7 +133,7 @@ else
     echo "Configurando container Java..."
     mkdir -p javaProjeto/Synapsys-Java
 
-    cat <<EOF > javaProjeto/Synapsys-Java/Dockerfile
+cat <<EOF > javaProjeto/Synapsys-Java/Dockerfile
 FROM openjdk:21-jdk-bullseye
 SHELL ["/bin/bash", "-c"]
 
@@ -162,7 +162,7 @@ EOF
 
 
 
-    cat <<EOF > javaProjeto/Synapsys-Java/manage-logs.sh
+cat <<EOF > javaProjeto/Synapsys-Java/manage-logs.sh
 #!/bin/bash
 
 # Diretório de logs no container

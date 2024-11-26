@@ -97,7 +97,7 @@ else
     git clone -b dev-sprint-3 https://github.com/SynapSys-SPTECH/Site-Institucional.git Node
 
     # Constrói e executa o container Node
-    cd Node
+    cd /home/ubuntu/Node
     docker build -t node-synapsys-image .
     docker run -d --name $NODE_CONTAINER --network $NETWORK_NAME -p 3333:3333 node-synapsys-image
 fi
@@ -109,7 +109,7 @@ if container_exists $JAVA_CONTAINER; then
 else
     echo "Configurando container Java..."
        
-    cd Java
+    cd /home/ubuntu/Java
     docker build -t script-java .
     docker run -d --name $JAVA_CONTAINER --network $NETWORK_NAME -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD script-java
 fi

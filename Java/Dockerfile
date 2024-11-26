@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y git cron awscli
 RUN git clone -b feature/BD-AWS https://github.com/SynapSys-SPTECH/Java.git /app
 
 RUN echo "Adicionando logs ao script de gerenciamento de logs"
-RUN chmod +x /Java/manage_logs.sh
+RUN chmod +x ./manage_logs.sh
 
 # Configurar o cron para executar o script de logs a cada 10 minutos
 RUN echo "*/10 * * * * /Java/manage_logs.sh" > /etc/cron.d/manage_logs \

@@ -20,11 +20,11 @@ services:
       context: ./projeto/Projeto-Synapsys
       dockerfile: Dockerfile
     environment:
-      - DB_HOST:'172.18.0.1'
-      - DB_DATABASE:'Synapsys'
-      - DB_USER:'root'
-      - DB_PASSWORD:'urubu100'
-      - DB_PORT:3306
+      - DB_HOST=172.18.0.1
+      - DB_DATABASE=Synapsys
+      - DB_USER=root
+      - DB_PASSWORD=urubu100
+      - DB_PORT=3306
     ports:
       - "3333:3333"
     depends_on:
@@ -33,19 +33,21 @@ services:
       - redeSynapsys
 
   java-synapsys:
-    image: gavassa/java-synapsys:latest
+    build:
+      context: ./Java
+      dockerfile: Dockerfile
     container_name: java-synapsys
     environment:
       DB_USER: root
       DB_PASSWORD: urubu100
       NAME_BUCKET: bucket-synapsys
-      DB_URL: jdbc:mysql://172.18.0.2:3306/Synapsys
+      DB_URL: jdbc:mysql://mysql-synapsys:3306/Synapsys
     depends_on:
       - mysql-synapsys
       - node-synapsys
     networks:
       - redeSynapsys
-    command: ["java", "-jar", "java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
+    command: ["bash", "-c", "cron && tail -f /var/log/cron.log & java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
 
 networks:
   redeSynapsys:

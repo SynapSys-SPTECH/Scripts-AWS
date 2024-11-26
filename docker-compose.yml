@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   mysql-synapsys:
-    image: gavassa/mysql-synapsys:latest
+    image: gavassa/mysql-synapsys:v3
     container_name: mysql-synapsys
     environment:
       MYSQL_ROOT_PASSWORD: urubu100
@@ -14,7 +14,7 @@ services:
       - ./init-db:/docker-entrypoint-initdb.d
 
   node-synapsys:
-    image: gavassa/node-synapsys:latest
+    image: gavassa/node-synapsys:v2
     container_name: node-synapsys
     build:
       context: ./projeto/Projeto-Synapsys

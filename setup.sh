@@ -34,4 +34,4 @@ fi
 cd ../../
 
 # Iniciar os serviços com Docker Compose
-docker-compose up --build
+docker-compose up --build -d

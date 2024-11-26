@@ -16,6 +16,9 @@ RUN echo "*/10 * * * * /app/manage_logs.sh >> /var/log/cron.log 2>&1" > /etc/cro
     && chmod 0644 /etc/cron.d/manage_logs \
     && crontab /etc/cron.d/manage_logs
 
+# Criar o arquivo de log do cron
+RUN touch /var/log/cron.log
+
 # Diretório de trabalho
 WORKDIR /app/target
 

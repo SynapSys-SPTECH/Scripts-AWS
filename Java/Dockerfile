@@ -7,9 +7,6 @@ RUN apt-get update && apt-get install -y git cron awscli
 # Clonar o repositório
 RUN git clone -b feature/BD-AWS https://github.com/SynapSys-SPTECH/Java.git /app
 
-# Diretório de trabalho
-WORKDIR /app/target
-
 RUN echo "Adicionando logs ao script de gerenciamento de logs"
 RUN chmod +x /Java/manage_logs.sh
 
@@ -17,6 +14,9 @@ RUN chmod +x /Java/manage_logs.sh
 RUN echo "*/10 * * * * /Java/manage_logs.sh" > /etc/cron.d/manage_logs \
     && chmod 0644 /etc/cron.d/manage_logs \
     && crontab /etc/cron.d/manage_logs
+
+# Diretório de trabalho
+WORKDIR /app/target
 
 # Iniciar o cron no início do container
 CMD ["bash", "-c", "cron -f && java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]

@@ -10,9 +10,8 @@ RUN git clone -b feature/BD-AWS https://github.com/SynapSys-SPTECH/Java.git /app
 # Diretório de trabalho
 WORKDIR /app/target
 
-# Copiar script para gerenciamento de logs
-COPY ../script-logs/manage_logs.sh /app/manage_logs.sh
-RUN chmod +x /script-logs/manage_logs.sh
+echo "Adicionando logs ao script de gerenciamento de logs"
+RUN chmod +x /app/script-logs/manage_logs.sh
 
 # Configurar o cron para executar o script de logs a cada 10 minutos
 RUN echo "*/10 * * * * /app/manage_logs.sh" > /etc/cron.d/manage_logs \

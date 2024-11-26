@@ -93,7 +93,7 @@ if container_exists $NODE_CONTAINER; then
     fi
 else
     echo "Clonando repositório e configurando container Node..."
-    rm -rf Node
+    
     git clone -b dev-sprint-3 https://github.com/SynapSys-SPTECH/Site-Institucional.git Node
 
     # Constrói e executa o container Node

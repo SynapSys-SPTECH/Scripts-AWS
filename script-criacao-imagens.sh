@@ -132,6 +132,7 @@ if container_exists $JAVA_CONTAINER; then
 else
     echo "Configurando container Java..."
     mkdir -p javaProjeto/Synapsys-Java
+    sudo rm -rf javaProjeto/Synapsys-Java/*
 
 cat <<EOF > javaProjeto/Synapsys-Java/manage_logs.sh
 #!/bin/bash
@@ -183,7 +184,7 @@ RUN echo "*/10 * * * * /app/manage_logs.sh" > /etc/cron.d/manage_logs \
     && crontab /etc/cron.d/manage_logs
 
 # Iniciar o cron no início do container
-CMD ["bash", "-c", "cron && java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
+CMD ["bash", "-c", "cron -f && java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
 
 EOF
 

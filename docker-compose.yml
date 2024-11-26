@@ -17,7 +17,7 @@ services:
     image: gavassa/node-synapsys:v2
     container_name: node-synapsys
     build:
-      context: ./projeto/Projeto-Synapsys
+      context: ./Node
       dockerfile: Dockerfile
     environment:
       - DB_HOST=172.18.0.1

@@ -23,4 +23,4 @@ RUN touch /var/log/cron.log
 WORKDIR /app/target
 
 # Iniciar o cron no início do container
-CMD ["bash", "-c", "cron && tail -f /var/log/cron.log & java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
+CMD ["bash", "-c", "cron -f & java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]

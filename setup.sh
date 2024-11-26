@@ -31,5 +31,7 @@ else
     cp "projeto/bancoProjeto/script-tabelas.sql" ../../init-db/
 fi
 
+cd ../../
+
 # Iniciar os serviços com Docker Compose
 docker-compose up --build

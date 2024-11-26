@@ -11,7 +11,7 @@ cd ..
 echo "=-----------------------------------------------="
 echo "Dando permissão de execução para todos os scripts"
 echo "=-----------------------------------------------="
-sudo chmod +x *.sh
+sudo chmod 777 *.sh
 
 cd Scripts-AWS
 git restore .

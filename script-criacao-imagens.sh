@@ -93,34 +93,11 @@ if container_exists $NODE_CONTAINER; then
     fi
 else
     echo "Clonando repositório e configurando container Node..."
-    mkdir -p projeto
-    rm -rf projeto/Projeto-Synapsys
-    git clone -b dev-sprint-3 https://github.com/SynapSys-SPTECH/Site-Institucional.git projeto/Projeto-Synapsys
-
-    cat <<EOF > projeto/Projeto-Synapsys/Dockerfile
-FROM node:20
-
-# Define o diretório de trabalho na raiz do projeto
-WORKDIR /app
-
-# Instala git e clona o repositório diretamente no Dockerfile
-RUN apt-get update && apt-get install -y git && \
-    git clone -b dev-sprint-3 https://github.com/SynapSys-SPTECH/Site-Institucional.git .
-
-RUN git pull
-
-# Instala as dependências
-RUN npm install
-
-# Exponha a porta necessária
-EXPOSE 3333
-
-# Comando de inicialização
-CMD ["npm", "start"]
-EOF
+    rm -rf Node
+    git clone -b dev-sprint-3 https://github.com/SynapSys-SPTECH/Site-Institucional.git Node
 
     # Constrói e executa o container Node
-    cd projeto/Projeto-Synapsys
+    cd Node
     docker build -t node-synapsys-image .
     docker run -d --name $NODE_CONTAINER --network $NETWORK_NAME -p 3333:3333 node-synapsys-image
 fi
@@ -131,40 +108,8 @@ if container_exists $JAVA_CONTAINER; then
     docker start $JAVA_CONTAINER
 else
     echo "Configurando container Java..."
-    mkdir -p javaProjeto/Synapsys-Java
-    sudo rm -rf javaProjeto/Synapsys-Java/*
-
-cat <<EOF > javaProjeto/Synapsys-Java/Dockerfile
-FROM openjdk:21-jdk-bullseye
-SHELL ["/bin/bash", "-c"]
-
-# Instalar dependências
-RUN apt-get update && apt-get install -y git cron awscli
-
-# Clonar o repositório
-RUN git clone -b feature/BD-AWS https://github.com/SynapSys-SPTECH/Java.git /app
-
-# Diretório de trabalho
-WORKDIR /app/target
-
-# Copiar script para gerenciamento de logs
-RUN chmod +x /script-logs/manage_logs.sh
-
-# Configurar o cron para executar o script de logs a cada 10 minutos
-RUN echo "*/10 * * * * /script-logs/manage_logs.sh" > /etc/cron.d/manage_logs \
-    && chmod 0644 /etc/cron.d/manage_logs \
-    && crontab /etc/cron.d/manage_logs
-
-# Iniciar o cron no início do container
-CMD ["bash", "-c", "cron -f && java -jar java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]
-
-EOF
-
-
-
-    
-
-    cd javaProjeto/Synapsys-Java
+       
+    cd Java
     docker build -t script-java .
     docker run -d --name $JAVA_CONTAINER --network $NETWORK_NAME -e DB_URL=$DB_URL -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD script-java
 fi

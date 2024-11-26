@@ -20,11 +20,11 @@ services:
       context: ./projeto/Projeto-Synapsys
       dockerfile: Dockerfile
     environment:
-    - DB_HOST:'172.18.0.1'
-    - DB_DATABASE:'Synapsys'
-    - DB_USER:'root'
-    - DB_PASSWORD:'urubu100'
-    - DB_PORT:3306
+      - DB_HOST:'172.18.0.1'
+      - DB_DATABASE:'Synapsys'
+      - DB_USER:'root'
+      - DB_PASSWORD:'urubu100'
+      - DB_PORT:3306
     ports:
       - "3333:3333"
     depends_on:
@@ -36,8 +36,8 @@ services:
     image: gavassa/java-synapsys:latest
     container_name: java-synapsys
     environment:
-      USER: root
-      SENHA: urubu100
+      DB_USER: root
+      DB_PASSWORD: urubu100
       NAME_BUCKET: bucket-synapsys
       DB_URL: jdbc:mysql://172.18.0.2:3306/Synapsys
     depends_on:

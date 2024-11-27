@@ -12,6 +12,18 @@ else
     sudo apt upgrade -y docker.io
 fi
 
+# Verificação e instalação do AWS CLI
+echo "Verificando se o AWS CLI está instalado..."
+if ! [ -x "$(command -v aws)" ]; then
+    echo "AWS CLI não está instalado. Instalando AWS CLI..."
+    sudo apt update
+    sudo apt install -y python3-pip
+    sudo pip3 install awscli --upgrade --user
+else
+    echo "AWS CLI já está instalado. Realizando upgrade..."
+    sudo pip3 install awscli --upgrade --user
+fi
+
 # Verificação e cópia do arquivo SQL
 mkdir -p init-db
 if [ -f "projeto/bancoProjeto/script-tabelas.sql" ]; then
@@ -28,8 +40,8 @@ else
     rm -rf projeto/bancoProjeto
     git clone https://github.com/SynapSys-SPTECH/Banco-de-Dados.git projeto/bancoProjeto
     git pull
-    cp "projeto/bancoProjeto/script-tabelas.sql" ../../init-db/
-fi
+    cp "projeto/bancoProjeto/script-tabelas.sql" .
+
 
 cd ../../
 

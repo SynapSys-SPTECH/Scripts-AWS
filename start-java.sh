@@ -15,7 +15,7 @@ mkdir -p "$LOG_DIR"
 if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
     echo "O container $CONTAINER_NAME já está em execução. Parando e removendo..."
     docker stop $CONTAINER_NAME >/dev/null 2>&1
-    docker rm $CONTAINER_NAME >/dev/null 2>&1
+    
 fi
 
 # Reinicia o container

@@ -28,7 +28,7 @@ sleep 10
 
 # Executa o comando Java dentro do container e redireciona os logs
 echo "Executando o JAR dentro do container e capturando os logs..."
-docker exec $CONTAINER_NAME java -jar /app/java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar &> "$LOG_FILE"
+docker exec $CONTAINER_NAME java -jar /app/target/java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar &> "$LOG_FILE"
 
 # Verifica se o arquivo de log foi gerado
 if [ -f "$LOGDIR/$LOG_FILE" ]; then

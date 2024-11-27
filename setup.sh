@@ -16,12 +16,18 @@ fi
 echo "Verificando se o AWS CLI está instalado..."
 if ! [ -x "$(command -v aws)" ]; then
     echo "AWS CLI não está instalado. Instalando AWS CLI..."
-    sudo apt update
-    sudo apt install -y awscli
 
+    # Baixar e adicionar o repositório da AWS
+    curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+
+    # Verificar instalação do AWS CLI
+    aws --version
 else
     echo "AWS CLI já está instalado. Realizando upgrade..."
-    sudo apt upgrade -y awscli
+    sudo apt update
+    sudo apt install --only-upgrade awscli
 fi
 
 # Verificação e cópia do arquivo SQL
@@ -41,6 +47,8 @@ else
     git clone https://github.com/SynapSys-SPTECH/Banco-de-Dados.git projeto/bancoProjeto
     git pull
     cp "projeto/bancoProjeto/script-tabelas.sql" .
+
+fi
 
 
 cd ../../

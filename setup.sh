@@ -17,11 +17,11 @@ echo "Verificando se o AWS CLI está instalado..."
 if ! [ -x "$(command -v aws)" ]; then
     echo "AWS CLI não está instalado. Instalando AWS CLI..."
     sudo apt update
-    sudo apt install -y python3-pip
-    sudo pip3 install awscli --upgrade --user
+    sudo apt install -y awscli
+
 else
     echo "AWS CLI já está instalado. Realizando upgrade..."
-    sudo pip3 install awscli --upgrade --user
+    sudo apt upgrade -y awscli
 fi
 
 # Verificação e cópia do arquivo SQL

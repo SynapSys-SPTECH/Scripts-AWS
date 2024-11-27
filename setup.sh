@@ -17,17 +17,13 @@ echo "Verificando se o AWS CLI está instalado..."
 if ! [ -x "$(command -v aws)" ]; then
     echo "AWS CLI não está instalado. Instalando AWS CLI..."
 
-    # Baixar e adicionar o repositório da AWS
-    curl "https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-    unzip awscliv2.zip
-    sudo ./aws/install
+    # Instalar AWS CLI
+    sudo snap install aws-cli --classic
+    sudo aws --version
 
-    # Verificar instalação do AWS CLI
-    aws --version
 else
     echo "AWS CLI já está instalado. Realizando upgrade..."
     sudo apt update
-    sudo apt install --only-upgrade awscli
 fi
 
 # Verificação e cópia do arquivo SQL

@@ -45,6 +45,7 @@ services:
     depends_on:
       - mysql-synapsys
       - node-synapsys
+    restart: always 
     networks:
       - redeSynapsys
     command: ["java", "-jar", "java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar"]

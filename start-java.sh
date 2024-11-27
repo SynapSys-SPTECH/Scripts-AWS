@@ -31,7 +31,7 @@ echo "Executando o JAR dentro do container e capturando os logs..."
 docker exec $CONTAINER_NAME java -jar /app/java-project-synapsys-2.0-SNAPSHOT-jar-with-dependencies.jar &> "$LOG_DIR/$LOG_FILE"
 
 # Verifica se o arquivo de log foi gerado
-if [ -f "$LOG_FILE" ]; then
+if [ -f "$LOGDIR/$LOG_FILE" ]; then
     echo "Arquivo de log gerado: $LOG_FILE"
 
     # Envia os logs para o bucket S3
